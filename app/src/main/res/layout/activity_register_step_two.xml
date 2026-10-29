@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.register.RegisterStepTwoActivity">
+
+    <ImageButton
+        android:id="@+id/buttonGoBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_arrow_left"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@null"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crie sua\nconta gratuíta"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="130dp"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="32sp"
+        android:textColor="@color/text_title" />
+
+    <TextView
+        android:id="@+id/textViewSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Basta preencher esses dados\ne você estará conosco"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/poppins"
+        android:textSize="14sp"
+        android:textColor="@color/text_base" />
+
+    <TextView
+        android:id="@+id/textViewTitleStepTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="02. E-mail e Senha"
+        app:layout_constraintTop_toBottomOf="@id/textViewSubtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="32dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="24sp"
+        android:textColor="@color/text_title" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitleStepTwo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        style="@style/CustomFilledTextFieldEmail"
+        android:hint="E-mail">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditEmail"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:textColor="@color/text_base"
+            android:textAppearance="@font/poppins"
+            android:textSize="16sp"
+            android:inputType="textEmailAddress" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/textInputLayoutEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        style="@style/CustomFilledTextFieldEmail"
+        android:hint="Senha"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/ic_eye_color">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditPassword"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:textColor="@color/text_base"
+            android:textAppearance="@font/poppins"
+            android:textSize="16sp"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonFinish"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:text="Concluir cadastro"
+        android:textAllCaps="false"
+        android:backgroundTint="@color/shape_disable"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="@color/text_complement"
+        android:textSize="16sp"
+        android:elevation="0dp"
+        android:stateListAnimator="@null" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.rafael.proffy.ui.register
 
 import android.content.Context
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import com.rafael.proffy.R
 import com.rafael.proffy.databinding.ActivityRegisterStepOneBinding
 
@@ -33,10 +35,8 @@ class RegisterStepOneActivity : AppCompatActivity() {
         val textInputLastName = binding.textInputEditLastName
         val buttonNext = binding.buttonNext
 
-        val enabledButton = ContextCompat.getColor(this, R.color.purple)
-        val disabledButton = ContextCompat.getColor(this, R.color.shape_disable)
-
-        setButtonState(true, enabledButton, disabledButton)
+        val enabledButtonColor = ContextCompat.getColor(this, R.color.purple)
+        val disabledButtonColor = ContextCompat.getColor(this, R.color.shape_disable)
 
         buttonGoBack.setOnClickListener {
             goBack()
@@ -44,6 +44,20 @@ class RegisterStepOneActivity : AppCompatActivity() {
 
         buttonNext.setOnClickListener {
             handleNextStep()
+        }
+
+        textInputFistName.addTextChangedListener {
+            val fistName = textInputFistName.text?.toString()?.trim() ?: ""
+            val lastName = textInputLastName.text?.toString()?.trim() ?: ""
+            val validInputs = fistName.isNotEmpty() && lastName.isNotEmpty()
+            setButtonState(validInputs, enabledButtonColor, disabledButtonColor)
+        }
+
+        textInputLastName.addTextChangedListener {
+            val fistName = textInputFistName.text?.toString()?.trim() ?: ""
+            val lastName = textInputLastName.text?.toString()?.trim() ?: ""
+            val validInputs = fistName.isNotEmpty() && lastName.isNotEmpty()
+            setButtonState(validInputs, enabledButtonColor, disabledButtonColor)
         }
     }
 
@@ -56,12 +70,24 @@ class RegisterStepOneActivity : AppCompatActivity() {
         val color = if (enabled) enabledColor else disabledColor
 
         binding.buttonNext.backgroundTintList = ColorStateList.valueOf(color)
-        val textColor = ContextCompat.getColor(this, R.color.shape_01_white)
+        val textColor = if (enabled)
+            ContextCompat.getColor(this, R.color.shape_01_white)
+        else
+            ContextCompat.getColor(this, R.color.text_complement)
         binding.buttonNext.setTextColor(textColor)
     }
 
     private fun handleNextStep() {
         val firstName = binding.textInputEditFirstName.text.toString()
         val lastName = binding.textInputEditLastName.text.toString()
+
+        if (firstName.length > 2 && lastName.length > 4) {
+            val intent = Intent(this, RegisterStepTwoActivity::class.java)
+            startActivity(intent)
+        } else {
+            binding.textInputEditFirstName.error = "Deve conter pelo menos 3 caracteres."
+            binding.textInputEditLastName.error = "Deve conter pelo menos 5 caracteres."
+        }
+
     }
 }
