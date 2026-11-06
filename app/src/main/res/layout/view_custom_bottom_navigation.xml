@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/custombottomNavigation"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/containerTeacherList"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:background="@drawable/bottom_nav_item_background"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iconPresentation"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/presentation_full_color_icon"
+            android:tint="@color/purple"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/textProffy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Proffy"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/text_base"
+            android:fontFamily="@font/archivo_semibold"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/containerTeacherFavorite"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:background="@drawable/bottom_nav_item_background"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/iconFavorite"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/favorite_icon"
+            android:tint="@color/purple"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/textFavorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Favoritos"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/text_base"
+            android:fontFamily="@font/archivo_semibold"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

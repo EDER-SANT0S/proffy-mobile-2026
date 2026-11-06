@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Proffy</string>
+
+    <string name="forgot_password_title">Esqueceu sua senha?</string>
+    <string name="forgot_password_subtitle">Não esquenta,\nvamos dar um jeito nisso.</string>
+    <string name="forgot_password_hint_email">E-mail</string>
+    <string name="forgot_password_back_description">Voltar</string>
+    <string name="forgot_password_button_default">Entrar</string>
+    <string name="forgot_password_button_send">Enviar</string>
+    <string name="forgot_password_error_invalid_email">Informe um e-mail válido.</string>
+    <string name="forgot_password_done_title">Redefinição\nenviada!</string>
+    <string name="forgot_password_done_subtitle">Boa, agora é só checar o e-mail que foi\nenviado para você redefinir sua senha\ne aproveitar os estudos.</string>
+    <string name="forgot_password_done_button">Voltar ao login</string>
 </resources>

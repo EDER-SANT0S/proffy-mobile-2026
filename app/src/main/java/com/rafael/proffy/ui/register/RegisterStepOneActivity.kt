@@ -83,6 +83,8 @@ class RegisterStepOneActivity : AppCompatActivity() {
 
         if (firstName.length > 2 && lastName.length > 4) {
             val intent = Intent(this, RegisterStepTwoActivity::class.java)
+            intent.putExtra("firstName",firstName)
+            intent.putExtra("latName",lastName)
             startActivity(intent)
         } else {
             binding.textInputEditFirstName.error = "Deve conter pelo menos 3 caracteres."

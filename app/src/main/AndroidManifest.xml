@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Proffy">
         <activity
+            android:name=".ui.forgotPassword.ForgotPasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
             android:name=".ui.finallyComponent.FinallyActivity"
             android:exported="false" />
         <activity
@@ -34,4 +38,4 @@
         </activity>
     </application>
 
-</manifest>
+</manifest>

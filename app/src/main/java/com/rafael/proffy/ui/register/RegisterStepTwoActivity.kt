@@ -1,10 +1,10 @@
 package com.rafael.proffy.ui.register
 
+
 import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Patterns
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -13,6 +13,8 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.rafael.proffy.R
 import com.rafael.proffy.databinding.ActivityRegisterStepTwoBinding
+import com.rafael.proffy.ui.finallyComponent.FinallyActivity
+import com.rafael.proffy.utils.ValidationUtils
 import org.intellij.lang.annotations.Pattern
 
 class RegisterStepTwoActivity : AppCompatActivity() {
@@ -36,6 +38,11 @@ class RegisterStepTwoActivity : AppCompatActivity() {
         val textInputEmail = binding.textInputEditEmail
         val textInputPassword = binding.textInputEditPassword
         val buttonFinish = binding.buttonFinish
+
+        val firstName = intent.getStringExtra("firstName")
+        val lastName = intent.getStringExtra("lastName")
+
+        println("Primeiro nome: $firstName, Sobrenome: $lastName")
 
         buttonGoBackStepOne.setOnClickListener {
             goBack()
@@ -79,7 +86,7 @@ class RegisterStepTwoActivity : AppCompatActivity() {
         val email = binding.textInputEditEmail.text.toString()
         val password = binding.textInputEditPassword.text.toString()
 
-        if (isValidEmail(email) && password.length > 4) {
+        if (ValidationUtils.isValidEmail(email) && password.length > 4) {
             //val intent = Intent(this, RegisterStepTwoActivity::class.java)
             //startActivity(intent)
         } else {
@@ -88,7 +95,14 @@ class RegisterStepTwoActivity : AppCompatActivity() {
         }
 
     }
-    private fun isValidEmail(email: String): Boolean {
-        return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
+
+    private fun sendDoneRegister() {
+        val intent = Intent(this, FinallyActivity::class.java)
+        intent.putExtra("textViewTitleFinally", "Cadastro\nconcluído!")
+        intent.putExtra("textViewSubtitleFinally", "Agora você faz parte da\nplataforma da Proffy")
+        intent.putExtra("titleButton", "Fazer login")
+
+        startActivity(intent)
+        finish()
     }
-}
+    }
