@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.teacherList.TeacherListFragment"
+    android:background="@color/background_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/purple_dark">
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageButton
+                        android:id="@+id/buttonGoHome"
+                        android:layout_width="42dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_arrow_left"
+                        app:tint="@color/text_in_purple_base"
+                        android:background="@null" />
+
+                    <TextView
+                        android:id="@+id/textViewTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Estudar"
+                        android:textColor="@color/text_in_purple_base"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/archivo_semibold"
+                        android:gravity="start" />
+
+                    <ImageView
+                        android:id="@+id/imageViewLogo"
+                        android:layout_width="32dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/proffy"
+                        android:layout_marginEnd="20dp" />
+                </LinearLayout>
+            </Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp"
+            android:overScrollMode="ifContentScrolls"
+            android:scrollIndicators="none">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerTitleFilters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingHorizontal="32dp"
+                    android:background="@color/purple"
+                    android:paddingBottom="70dp">
+
+                    <TextView
+                        android:id="@+id/textViewTitleProffy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Proffys\nDisponíveis"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="40dp"
+                        android:fontFamily="@font/archivo_semibold"
+                        android:textSize="24sp"
+                        android:textColor="@color/text_in_purple_base" />
+
+                    <ImageView
+                        android:id="@+id/imageViewEmoji"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/emoji"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/textViewConnectionsProffys"
+                        android:layout_marginTop="50dp"
+                        android:layout_marginEnd="8dp" />
+
+                    <TextView
+                        android:id="@+id/textViewConnectionsProffys"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="32 proffys"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="50dp"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_in_purple_base" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewTitleProffy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/another_purple" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/divider"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="20dp"
+                        android:hint="Matéria"
+                        style="@style/CustomTextInputLayout.FilledBox">
+                        <AutoCompleteTextView
+                            android:id="@+id/textInputTextViewSubject"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:fontFamily="?attr/textAppearanceLargePopupMenu"
+                            android:textColor="@color/text_base"
+                            android:textAppearance="@font/poppins"
+                            android:background="@drawable/bg_dropdown_rounded"
+                            android:textSize="14sp"
+                            tools:ignore="LabelFor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutWeekDay"
+                        android:layout_width="179dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSubject"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:hint="Dia da Semana"
+                        style="@style/CustomTextInputLayout.FilledBox">
+                        <AutoCompleteTextView
+                            android:id="@+id/textInputTextViewWeekDay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:fontFamily="?attr/textAppearanceLargePopupMenu"
+                            android:textColor="@color/text_base"
+                            android:textAppearance="@font/poppins"
+                            android:background="@drawable/bg_dropdown_rounded"
+                            android:textSize="14sp"
+                            tools:ignore="LabelFor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/textInputLayoutHours"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutSubject"
+                        app:layout_constraintStart_toEndOf="@+id/textInputLayoutWeekDay"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:hint="Hora"
+                        style="@style/CustomTextInputLayout.FilledBox">
+                        <AutoCompleteTextView
+                            android:id="@+id/textInputTextViewHours"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="none"
+                            android:fontFamily="?attr/textAppearanceLargePopupMenu"
+                            android:textColor="@color/text_base"
+                            android:textAppearance="@font/poppins"
+                            android:background="@drawable/bg_dropdown_rounded"
+                            android:textSize="14sp"
+                            tools:ignore="LabelFor" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="1dp"
+                    android:layout_marginBottom="17dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/containerTitleFilters"
+                    android:layout_marginTop="-30dp"
+                    android:layout_marginHorizontal="16dp"
+                    android:background="@drawable/container_teacher_rounded_background">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/imageViewTeacher"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:src="@drawable/image_person"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginStart="24dp" />
+
+                    <TextView
+                        android:id="@+id/textViewFullName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fulano de tal"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewTeacher"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/archivo_semibold"
+                        android:textSize="20sp"
+                        android:textColor="@color/text_title" />
+
+                    <TextView
+                        android:id="@+id/textViewSubject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Química"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewFullName"
+                        app:layout_constraintStart_toEndOf="@+id/imageViewTeacher"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_base" />
+
+                    <TextView
+                        android:id="@+id/textViewBio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="arafasfasfasf asf asfasfafaf aafafafafasfafafs"
+                        app:layout_constraintTop_toBottomOf="@+id/imageViewTeacher"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginHorizontal="24dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/poppins"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_base" />
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/dividerContainerTeacher"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        app:layout_constraintTop_toBottomOf="@+id/textViewBio"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="10dp"
+                        app:dividerColor="@color/lines_in_white"
+                        app:dividerInsetStart="0dp"
+                        app:dividerInsetEnd="0dp" />
+
+                    <LinearLayout
+                        android:id="@+id/listDayHours"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/dividerContainerTeacher"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginHorizontal="24dp"
+                        android:background="@drawable/container_teacher_rounded_background"
+                        android:backgroundTint="@color/shape_02_white"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="24dp"
+                        android:paddingVertical="8dp">
+                        <TextView
+                            android:id="@+id/textViewWeekDay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Segunda"
+                            android:fontFamily="@font/archivo_semibold"
+                            android:textSize="16sp" />
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.65" />
+
+                        <ImageView
+                            android:layout_width="64dp"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right" />
+
+                        <Space
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.65" />
+
+                        <TextView
+                            android:id="@+id/textViewHour"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="8h - 18h"
+                            android:fontFamily="@font/archivo_semibold"
+                            android:textColor="@color/text_base"
+                            android:textSize="16sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:id="@+id/divideHours"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        app:layout_constraintTop_toBottomOf="@+id/listDayHours"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginTop="24dp"
+                        app:dividerColor="@color/lines_in_white"
+                        app:dividerInsetStart="0dp"
+                        app:dividerInsetEnd="0dp" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/containerCostContact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@id/divideHours"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:paddingBottom="24dp"
+                        android:background="@drawable/container_cost_contact_roudend_background">
+
+                        <TextView
+                            android:id="@+id/textViewCostInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Preço da minha hora:"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="24dp"
+                            android:fontFamily="@font/poppins"
+                            android:textSize="14sp"
+                            android:textColor="@color/text_base"/>
+
+                        <TextView
+                            android:id="@+id/textViewCost"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="R$ 80,00 reais"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:layout_marginTop="21dp"
+                            android:layout_marginEnd="24dp"
+                            android:fontFamily="@font/archivo_semibold"
+                            android:textSize="16sp"
+                            android:textColor="@color/purple" />
+
+                        <ImageButton
+                            android:id="@+id/image_button_favorite"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:src="@drawable/unfavorite"
+                            android:background="@drawable/button_rounded_corner"
+                            android:backgroundTint="@color/delete"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewCostInfo"
+                            app:layout_constraintStart_toStartOf="parent"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginBottom="24dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/button_send_contact"
+                            android:layout_width="0dp"
+                            android:layout_height="56dp"
+                            app:layout_constraintTop_toBottomOf="@+id/textViewCost"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/image_button_favorite"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="24dp"
+                            app:backgroundTint="@color/green"
+                            android:background="@drawable/button_rounded_corner"
+                            android:text="Entrar em contato"
+                            android:textAllCaps="false"
+                            app:icon="@drawable/whatsapp"
+                            app:iconGravity="start"
+                            app:iconPadding="8dp"
+                            app:iconTint="@null"
+                            android:stateListAnimator="@null"
+                            android:fontFamily="@font/archivo_semibold"
+                            android:textSize="16sp"
+                            android:textColor="@color/shape_01_white" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

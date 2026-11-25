@@ -28,10 +28,10 @@ class FinallyActivity : AppCompatActivity() {
 
         val buttonGoToLogin = binding.buttonGoToLogin
         val textViewTitle = binding.textViewTitleFinally
-        val textViewSubtitle= binding.textViewSubtitle
+        val textViewSubtitle = binding.textViewSubtitle
 
         val title = intent.getStringExtra("textViewTitleFinally")
-        val subtitle = intent.getStringExtra("textViewSubtitle")
+        val subtitle = intent.getStringExtra("textViewSubtitleFinally")
         val titleButton = intent.getStringExtra("titleButton")
 
         textViewTitle.text = title
@@ -41,6 +41,12 @@ class FinallyActivity : AppCompatActivity() {
         buttonGoToLogin.setOnClickListener {
             goToLogin()
         }
+    }
+
+    private fun goToLogin() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun goToLogin() {

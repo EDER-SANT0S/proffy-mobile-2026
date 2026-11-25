@@ -14,7 +14,6 @@ import androidx.core.widget.addTextChangedListener
 import com.rafael.proffy.R
 import com.rafael.proffy.databinding.ActivityRegisterStepTwoBinding
 import com.rafael.proffy.ui.finallyComponent.FinallyActivity
-import com.rafael.proffy.utils.ValidationUtils
 import org.intellij.lang.annotations.Pattern
 
 class RegisterStepTwoActivity : AppCompatActivity() {
@@ -64,6 +63,10 @@ class RegisterStepTwoActivity : AppCompatActivity() {
             val validInputs = fistName.isNotEmpty() && lastName.isNotEmpty()
             setButtonState(validInputs, enabledButtonColor, disabledButtonColor)
         }
+
+        buttonFinish.setOnClickListener {
+            sendDoneRegister()
+        }
     }
 
     private fun goBack() {
@@ -106,3 +109,14 @@ class RegisterStepTwoActivity : AppCompatActivity() {
         finish()
     }
     }
+
+    private fun sendDoneRegister() {
+        val intent = Intent(this, FinallyActivity::class.java)
+        intent.putExtra("textViewTitleFinally", "Cadastro\nconcluído!")
+        intent.putExtra("textViewSubtitleFinally", "Agora você faz parte da\nplataforma da Proffy")
+        intent.putExtra("titleButton", "Fazer Login")
+
+        startActivity(intent)
+        finish()
+    }
+}

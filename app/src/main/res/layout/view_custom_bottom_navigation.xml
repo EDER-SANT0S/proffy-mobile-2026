@@ -4,7 +4,8 @@
     android:layout_height="56dp"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/custombottomNavigation"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:background="@android:color/white">
 
     <LinearLayout
         android:id="@+id/containerTeacherList"

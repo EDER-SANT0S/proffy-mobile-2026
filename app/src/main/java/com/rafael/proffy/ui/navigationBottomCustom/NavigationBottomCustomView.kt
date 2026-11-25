@@ -11,8 +11,7 @@ import com.rafael.proffy.databinding.ViewCustomBottomNavigationBinding
 class NavigationBottomCustomView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
-) : LinearLayout(context, attrs) {
-
+): LinearLayout(context, attrs) {
     private val binding = ViewCustomBottomNavigationBinding.inflate(
         LayoutInflater.from(context), this, true
     )
@@ -21,17 +20,13 @@ class NavigationBottomCustomView @JvmOverloads constructor(
     var onItemSelectedListener: ((Int) -> Unit)? = null
 
     init {
-        setupListener()
+        setupListeners()
         updateSelection(R.id.containerTeacherList)
     }
 
-    private fun setupListener() {
-        binding.containerTeacherList.setOnClickListener {
-            updateSelection(R.id.containerTeacherList)
-        }
-        binding.containerTeacherFavorite.setOnClickListener {
-            updateSelection(R.id.containerTeacherFavorite)
-        }
+    private fun setupListeners() {
+        binding.containerTeacherList.setOnClickListener { updateSelection( R.id.containerTeacherList) }
+        binding.containerTeacherFavorite.setOnClickListener { updateSelection( R.id.containerTeacherFavorite) }
     }
 
     private fun updateSelection(itemId: Int) {
@@ -42,21 +37,15 @@ class NavigationBottomCustomView @JvmOverloads constructor(
         val texts = listOf(binding.textProffy, binding.textFavorite)
         val ids = listOf(R.id.containerTeacherList, R.id.containerTeacherFavorite)
 
-        for (i in items.indices) {
+        for( i in items.indices) {
             val selected = ids[i] == itemId
             items[i].isSelected = selected
-
-            val color = ContextCompat.getColor(
-                context, if (selected) R.color.text_title else R.color.text_input
-            )
-            val colorIcon = ContextCompat.getColor(
-                context, if (selected) R.color.purple else R.color.text_input
-            )
-
+            val color = ContextCompat.getColor(context, if (selected) R.color.text_title else R.color.text_input)
+            val colorIcon = ContextCompat.getColor(context, if (selected) R.color.purple else R.color.text_input)
             icons[i].setColorFilter(colorIcon)
             texts[i].setTextColor(color)
-        }
 
-        onItemSelectedListener?.invoke(itemId)
+            onItemSelectedListener?.invoke(itemId)
+        }
     }
 }
